@@ -16,9 +16,11 @@ const AddCategory = () => {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const { categories, createNewItem } = useContext(CategoryContext);
 
-  const { categories } = useContext(CategoryContext);
+  const onSubmit = (data) => {
+    createNewItem(data);
+  }
 
   useEffect(() => {
     console.log(errors);
