@@ -8,19 +8,15 @@ import styles from './Home.module.css';
 
 const Home = () => {
 
-	const { itemsDisplay, setItemsDisplay, itemsList } = useContext(CategoryContext);
-
-	useEffect(() => {
-		setItemsDisplay(itemsList);
-	}, []);
+	const { itemsDisplay, deleteAnItem } = useContext(CategoryContext);
 
 	return (
 		<div className={styles.home_container}>
-			{/* {
+			{
 				itemsDisplay.length > 0 ?
 					(
 						itemsDisplay.map((item) =>
-							<ItemDisplay key={item.id} item={item} />
+							<ItemDisplay key={item.id} item={item} deleteItem={deleteAnItem} />
 						)
 					)
 					:
@@ -29,7 +25,7 @@ const Home = () => {
 							<p>Nenhum item nesta categoria.</p>
 						</div>
 					)
-			} */}
+			}
 		</div>
 	)
 }
