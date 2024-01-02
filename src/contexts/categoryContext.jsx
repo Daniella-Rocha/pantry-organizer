@@ -6,7 +6,7 @@ export const CategoryContext = createContext();
 
 export const CategoryProvider = ({ children }) => {
 
-    const { itemsList, categories, updateItem } = useRequestItems();
+    const { itemsList, categories, updateItem, createNewItem, deleteAnItem } = useRequestItems();
 
     const [itemsDisplay, setItemsDisplay] = useState([]);
 
@@ -50,7 +50,9 @@ export const CategoryProvider = ({ children }) => {
         filterItems,
         filterCategory,
         updateItem,
-        categoriesDisplay
+        categoriesDisplay,
+        createNewItem,
+        deleteAnItem
     }
 
     return <CategoryContext.Provider value={sharedValues}>
