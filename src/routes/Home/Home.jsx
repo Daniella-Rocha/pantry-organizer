@@ -8,7 +8,11 @@ import styles from './Home.module.css';
 
 const Home = () => {
 
-	const { itemsDisplay, deleteAnItem } = useContext(CategoryContext);
+	const { itemsDisplay, setItemsDisplay, itemsList, deleteAnItem } = useContext(CategoryContext);
+
+	useEffect(() => {
+		setItemsDisplay(itemsList);
+	}, []);
 
 	return (
 		<div className={styles.home_container}>
