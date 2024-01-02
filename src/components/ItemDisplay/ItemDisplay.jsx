@@ -18,7 +18,7 @@ import styles from './ItemDisplay.module.css';
 
 dayjs.locale('pt-br');
 
-const ItemDisplay = ({ item }) => {
+const ItemDisplay = ({ item, deleteItem }) => {
 
     const { name, quantity, category, expiration_date } = item;
 
@@ -40,7 +40,7 @@ const ItemDisplay = ({ item }) => {
 
     return (
         <div className={styles.container_display}>
-            {/* <div >
+            <div >
                 <h3>{name}</h3>
                 <span>Qtd: {quantity}</span>
                 <div>
@@ -86,11 +86,12 @@ const ItemDisplay = ({ item }) => {
 
                         type="button"
                         aria-label='excluir'
+                        onClick={() => deleteItem(item.id)}
                     >
                         Excluir
                     </button>
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }
