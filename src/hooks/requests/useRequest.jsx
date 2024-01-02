@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { requestPantryOrganizer } from '../../axios/config';
+import { requestPantryOrganizer } from '../../axios/config.jsx';
 
 export const useRequestItems = () => {
     const [itemsList, setItemsList] = useState([]);
