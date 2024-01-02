@@ -1,0 +1,78 @@
+.container_display {
+    background: cornsilk;
+    margin: 1rem 0.6rem;
+    padding: 1rem;
+}
+
+.container_display > :first-child {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.container_display > :first-child span {
+    padding: 0.25rem 0;
+}
+
+.container_display > :nth-child(2) span {
+    align-items: center;
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.2rem 0.2rem 0.2rem 0;
+}
+
+.expires_soon{
+    align-items: center;
+    display: flex;
+    color: #f0aa27;
+    gap: 0.4rem;
+    padding: 0.2rem 0.2rem 0.2rem 0;
+} 
+
+.expired {
+    color: red;
+}
+
+.item_display_btns{
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+}
+
+.item_display_btn_delete {
+    align-items: center;
+    background: red;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0.2rem 0.4rem;
+    margin-bottom: 0.65rem;
+}
+
+.item_display_btn_delete:hover{
+    background-color: #de0101;
+}
+
+.item_display_btn_delete button{
+    background: none;
+    border: none;
+    color: #fff;
+ }
+
+@media only screen and (min-width: 1005px) {
+    .container_display {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        width: 80%;
+    }
+
+    .container_display > :first-child {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+}

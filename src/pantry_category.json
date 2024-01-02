@@ -1,0 +1,48 @@
+[
+    
+    {
+      "id": 1,
+        "category_name": "mercearia",
+        "description": "produto alimentício não perecível"
+    },
+    {
+      "id": 2,
+        "category_name": "higiene pessoal",
+        "description": "produto utilizado no dia a dia para limpeza, cuidado e manutenção da saúde pessoal"
+    },
+    {
+      "id": 3,
+        "category_name": "higiene e limpeza",
+        "description": ""
+    },
+    {
+      "id": 4,
+        "category_name": "lanches e petiscos",
+        "description": ""
+    },
+    {
+      "id": 5,
+        "category_name": "frutas e legumes",
+        "decription": "itens de hortifruit"
+    },
+    {
+      "id": 6,
+        "category_name": "bebidas",
+        "description": "sucos, bebidas lácteas e e bebidas alcoolicas"
+    },
+    {
+      "id": 7,
+        "category_name": "laticínio",
+        "description": ""
+    },
+    {
+      "id": 8,
+        "category_name": "congelados",
+        "description": ""
+    },
+    {
+      "id": 9,
+        "category_name": "enlatados",
+        "description": ""
+    }
+]

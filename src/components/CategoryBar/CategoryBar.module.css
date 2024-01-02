@@ -1,0 +1,60 @@
+.container_categories {
+    width: 100%;
+}
+
+.mobile_options {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.mobile_options button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+}
+
+.options_list {
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    z-index: 9;
+}
+
+.options_list li {
+    list-style: none;
+    padding: 0.4rem;
+}
+
+.options_visible {
+    background: #fffbf0;
+    display: flex;
+}
+
+@media only screen and (min-width: 1005px) {
+    .options_list {
+        background: none;
+        display: flex;
+        width: 100%;
+    }
+
+    .options_list ul {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .options_list ul li{
+        cursor: grab;
+    }
+    
+    .mobile_option{
+        display: flex;
+    }
+
+    .mobile_options button {
+        display: none;
+    }
+}

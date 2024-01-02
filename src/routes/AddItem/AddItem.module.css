@@ -1,0 +1,40 @@
+.container_item {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+}
+
+.container_item h1 {
+    color: #353535;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.container_item form {
+    width: 80%;
+}
+
+.container_item form div{
+    margin: 0.6rem 0;
+}
+
+.container_item form div input{
+    padding: 0.4rem;
+}
+
+.container_item form div select{
+    padding: 0.4rem;
+}
+
+.error{
+    color: red;
+}
+
+@media only screen and (min-width: 1005px) {
+    .container_item h1 {
+        font-size: 1.6rem;
+    }
+}

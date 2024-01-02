@@ -1,0 +1,52 @@
+.container{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.container h2{
+    margin: 1rem 0;
+    padding: 0.4rem;
+}
+
+.category{
+    align-items: center;
+    background: cornsilk;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 80%;
+}
+
+.category :first-child {
+    width: 65%;
+}
+
+.category :first-child span{
+    font-weight: 600;
+}
+
+.action_btn{
+    display: flex;
+    gap: 0.6rem;
+    width: 30%;
+}
+
+.btn_delete{
+    background: red;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    padding: 0 0.2rem; 
+    transition: all 400ms;
+    width: 80px;
+}
+
+.btn_delete:hover{
+    background-color: #de0101;
+}

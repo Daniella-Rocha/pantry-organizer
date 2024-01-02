@@ -1,0 +1,21 @@
+.container {
+    padding: 1rem;
+    width: 100%;
+}
+
+.container h1 {
+    color: #353535;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.error {
+    color: red;
+}
+
+@media only screen and (min-width: 1005px) {
+    .container h1 {
+        font-size: 1.6rem;
+    }
+}

@@ -1,0 +1,21 @@
+.form_select{
+    background: #fff;
+    margin-bottom: 0.6rem!important;
+    width: 80%!important;
+}
+
+.form_select .list > :first-child{
+    padding: 0.65rem!important;
+}
+
+.control_date_qtd{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+}
+
+.error{
+    color: red;
+}

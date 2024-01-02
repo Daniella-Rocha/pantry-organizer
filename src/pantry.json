@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "name": "Arroz branco",
+    "description": "arroz branco, agulhinha, tipo 1",
+    "category": "mercearia",
+    "expiration_date": "2024-06-04",
+    "quantity": 2,
+    "balance": 0
+  },
+  {
+    "id": 2,
+    "name": "Feijão",
+    "description": "feijão, tipo 1",
+    "category": "mercearia",
+    "expiration_date": "2024-06-04",
+    "quantity": 1,
+    "balance": 0
+  },
+  {
+    "id": 3,
+    "name": "Arroz branco",
+    "description": "arroz branco, agulhinha, tipo 1",
+    "category": "mercearia",
+    "expiration_date": "2024-06-04",
+    "quantity": 4,
+    "balance": 0
+  },
+  {
+    "id": 4,
+    "name": "Macarrão",
+    "description": "macarrão espaguete",
+    "category": "mercearia",
+    "expiration_date": "2024-06-04",
+    "quantity": 3,
+    "balance": 0
+  },
+  {
+    "id": 5,
+    "name": "Shampoo Pantene",
+    "description": "Shampoo Pantene 350ml",
+    "category": "higiene pessoal",
+    "expiration_date": "2024-06-04",
+    "quantity": 2,
+    "balance": 0
+  },
+  {
+    "id": 6,
+    "name": "Farinha de trigo",
+    "description": "farinha de trigo, tipo 1",
+    "category": "mercearia",
+    "expiration_date": "2021-06-04",
+    "quantity": 3,
+    "balance": 0
+  },
+  {
+    "id": 7,
+    "name": "Pão Bauducco",
+    "description": "pão de forma",
+    "category": "padaria",
+    "expiration_date": "2024-06-04",
+    "quantity": 2,
+    "balance": 0
+  },
+  {
+    "id": 8,
+    "name": "Biscoito Isabela",
+    "description": "biscoito recheado tortinha - 120g",
+    "category": "lanches e petiscos",
+    "expiration_date": "2024-06-04",
+    "quantity": 1,
+    "balance": 0
+  },
+  {
+    "id": 9,
+    "name": "Achocolatado 3 Corações",
+    "description": "achocolatado lata",
+    "category": "mercearia",
+    "expiration_date": "2024-06-04",
+    "quantity": 1,
+    "balance": 0
+  },
+  {
+    "id": 10,
+    "name": "Barra de chocolate Milka",
+    "description": "chocolate ao leite",
+    "category": "lanches e petiscos",
+    "expiration_date": "2024-06-04",
+    "quantity": 2,
+    "balance": 0
+  },
+  {
+    "id": 11,
+    "name": "Vinho Espumante",
+    "description": "vinho tinto, suave",
+    "category": "bebidas",
+    "expiration_date": "2023-12-31",
+    "quantity": 2,
+    "balance": 0
+  }
+]

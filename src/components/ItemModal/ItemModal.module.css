@@ -1,0 +1,13 @@
+.item_modal {
+    align-items: center;
+    display: flex;
+    gap: 0.6rem;
+}
+
+.modal h2 {
+    text-align: center;
+}
+
+.modal p {
+    padding: 1rem;
+}

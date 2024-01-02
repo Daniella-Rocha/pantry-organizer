@@ -1,0 +1,18 @@
+/* .nested_modal{
+} */
+
+.nested_modal > div >:first-child{
+    display: flex;
+    flex-direction: column;
+    padding: 0.4rem;
+}
+
+.nested_modal > div >:first-child > div{
+    display: flex;
+    flex-direction: column;
+    padding: 0.12rem 0.4rem;
+}
+
+.nested_modal > div >:first-child > div span{
+    padding: 0.12rem 0.4rem;
+}

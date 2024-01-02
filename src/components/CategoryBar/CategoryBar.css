@@ -1,0 +1,11 @@
+.rts___tab{
+    background: #fffbf0;
+}
+
+.rts___tab:hover{
+    background: #f8c880;
+}
+
+.rts___tab___selected{
+    background: #fd9e02;
+}

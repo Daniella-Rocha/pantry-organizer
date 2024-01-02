@@ -1,0 +1,16 @@
+.footer {
+    align-items: center;
+    background: wheat;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+.footer :nth-child(2) ul li {
+    list-style: none;
+    margin-bottom: 0.5rem;
+}
+
+.footer :nth-child(2) ul :last-child {
+    margin-bottom: 0;
+}
