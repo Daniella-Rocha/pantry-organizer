@@ -1,4 +1,4 @@
-#Pantry Organizer
+# Pantry Organizer
 
 Um app de controle de despensa, promovendo a você maior controle dos itens da sua despensa (não somente). Você pode adicionar itens da sua área de serviço por exemplo, e saber qual acaba o sabão em pó, adicione os itens da sua despensa e saiba o que fazer para o jantar.
 
