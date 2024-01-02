@@ -18,11 +18,19 @@ const EditItem = ({ item }) => {
 
     const { updateItem } = useContext(CategoryContext);
 
-    const { register, handleSubmit, control, formState: { errors } } = useForm();
+    const { register, handleSubmit, control, formState: { errors } } = useForm({
+        defaultValues:{
+            name: item.name,
+            description: item.description,
+            category: item.category,
+            expire_date: item.expiration_date,
+            quantity: item.quantity,
+            weight: item.weight
+        }
+    });
 
     const onSubmit = (data) => {
         item = {
-            id: item.id,
             name: data.name,
             description: data.description,
             category: data.category,
