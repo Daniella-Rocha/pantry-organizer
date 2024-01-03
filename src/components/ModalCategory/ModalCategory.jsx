@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 
 import { useForm } from "react-hook-form";
 
@@ -8,15 +8,31 @@ import Modal from 'react-bootstrap/Modal';
 
 import Form from 'react-bootstrap/Form';
 
-import { IoIosSend } from "react-icons/io";
+import { CategoryContext } from '../../contexts/categoryContext';
 
 import styles from './ModalCategory.module.css';
 
-const ModalCategory = () => {
+const ModalCategory = ({ item, updateStateCategory }) => {
 
-    const { register, handleSubmit, control, formState: { errors } } = useForm();
-    
-    const onSubmit = (data) => console.log(data);
+    const { updateCategory } = useContext(CategoryContext);
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        defaultValues: {
+            category_name: item.category_name,
+            description: item.description
+        }
+    });
+
+    const onSubmit = (data) => {
+        const newItem = {
+            id: item.id,
+            category_name: data.category_name,
+            description: data.description
+        }
+        setShow(false);
+        updateCategory(item.id, data);
+        updateStateCategory(newItem);
+    };
 
     const [fullscreen, setFullscreen] = useState(true);
 
@@ -63,7 +79,7 @@ const ModalCategory = () => {
                     >
                         <Form.Group
                             className="mb-3"
-                            controlId="name_category"
+                            controlId="category_name"
                         >
                             <Form.Label>
                                 Nome da categoria
@@ -71,7 +87,7 @@ const ModalCategory = () => {
                             <Form.Control
                                 type="text"
                                 placeholder="Nome"
-                                {...register("name_category",
+                                {...register("category_name",
                                     {
                                         required: "Este campo não ser vazio.",
                                         minLength: {
@@ -87,7 +103,7 @@ const ModalCategory = () => {
                             <span
                                 className={styles.error}
                             >
-                                {errors.name_category?.message}
+                                {errors.category_name?.message}
                             </span>
                         </Form.Group>
                         <Form.Group
