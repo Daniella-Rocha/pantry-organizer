@@ -6,7 +6,7 @@ export const CategoryContext = createContext();
 
 export const CategoryProvider = ({ children }) => {
 
-    const { itemsList, categories, updateItem, createNewItem, deleteAnItem } = useRequestItems();
+    const { itemsList, categories, updateItem, createNewItem, deleteAnItem, newCategory, deleteACategory, updateCategory } = useRequestItems();
 
     const [itemsDisplay, setItemsDisplay] = useState([]);
 
@@ -20,6 +20,7 @@ export const CategoryProvider = ({ children }) => {
         setCategoriesDisplay(categories);
     }, [categories]);
 
+    // filtra os itens de acordo com o botão selecionado na home
     const filterItems = (category) => {
         if (category === "Todos") {
             setItemsDisplay(itemsList);
@@ -31,15 +32,16 @@ export const CategoryProvider = ({ children }) => {
         setItemsDisplay(newItems);
     }
 
-    const filterCategory = (category) => {
-        if (category === "Todas") {
-            setCategoriesDisplay(categories);
-        }
+    
+    // const filterCategory = (category) => {
+    //     if (category === "Todas") {
+    //         setCategoriesDisplay(categories);
+    //     }
 
-        const newCategory = categories.filter(item => item.category_name === category);
+    //     const newCategory = categories.filter(item => item.category_name === category);
 
-        setCategoriesDisplay(newCategory);
-    }
+    //     setCategoriesDisplay(newCategory);
+    // }
 
 
     const sharedValues = {
@@ -48,11 +50,15 @@ export const CategoryProvider = ({ children }) => {
         itemsList,
         setItemsDisplay,
         filterItems,
-        filterCategory,
+        // filterCategory,
         updateItem,
         categoriesDisplay,
         createNewItem,
-        deleteAnItem
+        deleteAnItem,
+        newCategory,
+        deleteACategory,
+        setCategoriesDisplay,
+        updateCategory
     }
 
     return <CategoryContext.Provider value={sharedValues}>
