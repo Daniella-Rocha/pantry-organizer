@@ -1,10 +1,10 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 import { CategoryContext } from '../../contexts/categoryContext';
 
-import { RiDeleteBin2Fill } from "react-icons/ri";
+// import ModalCategory from '../../components/ModalCategory/ModalCategory';
 
-import ModalCategory from '../../components/ModalCategory/ModalCategory';
+import CategoryDisplay from '../../components/CategoryDisplay/CategoryDisplay';
 
 import styles from './AllCategories.module.css';
 
@@ -13,35 +13,14 @@ const AllCategories = () => {
     const { categoriesDisplay } = useContext(CategoryContext);
 
     return (
+        // se houver items na lista de categorias cria-se as seções para cada item
+
         categoriesDisplay.length > 0 &&
         <div className={styles.container}>
             <h2>Todas as categorias</h2>
             {
                 categoriesDisplay.map((item) =>
-                    <div
-                        key={item.id}
-                        className={styles.category}
-                    >
-                        <div>
-                            <h3>{item.category_name}</h3>
-                            <span>Descrição:</span>
-                            <p>
-                                {item.description}
-                            </p>
-                        </div>
-                        <div
-                            className={styles.action_btn}
-                        >
-                            <ModalCategory />
-                            <button
-                                type="button"
-                                aria-label='excluir'
-                                className={styles.btn_delete}
-                            >
-                                Excluir
-                            </button>
-                        </div>
-                    </div>
+                    <CategoryDisplay key={item.id} item={item} />
                 )
             }
         </div>
