@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 
 import { useForm } from "react-hook-form";
 
@@ -8,13 +10,30 @@ import Button from 'react-bootstrap/Button';
 
 import { IoIosSend } from "react-icons/io";
 
+import { CategoryContext } from '../../contexts/categoryContext';
+
+import { v4 as uuidv4 } from 'uuid';
+
 import styles from './AddCategory.module.css';
 
-const AddItem = () => {
+const AddCategory = () => {
+
+  const navigate = useNavigate();
+
+  const { newCategory } = useContext(CategoryContext);
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const item = {
+      ...data,
+      id: uuidv4()
+    }
+
+    newCategory(item);
+
+    navigate('/todas-categorias');
+  };
 
   return (
     <div className={styles.container}>
@@ -23,7 +42,7 @@ const AddItem = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <Form.Group
-          controlId="name_category"
+          controlId="category_name"
         >
           <Form.Label>
             Nome da categoria
@@ -32,7 +51,7 @@ const AddItem = () => {
             type="text"
             placeholder="Categoria"
             {
-            ...register("name_category",
+            ...register("category_name",
               {
                 required: "Este campo não pode ser vazio",
                 minLength: {
@@ -90,4 +109,4 @@ const AddItem = () => {
   )
 }
 
-export default AddItem
+export default AddCategory
