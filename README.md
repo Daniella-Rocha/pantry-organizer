@@ -6,6 +6,12 @@ Evite desperdício comprando apensa o necessário para a sua casa, economizando 
 
 Ideal para uso doméstico.
 
+## Futuras implementações:
+
+Login
+Última entrada 
+Última sáida
+
 
 # React + Vite
 
