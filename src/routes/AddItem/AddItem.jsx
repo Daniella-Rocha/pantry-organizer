@@ -1,4 +1,6 @@
-import { useState, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 
 import { useForm } from "react-hook-form";
 
@@ -10,16 +12,26 @@ import Form from 'react-bootstrap/Form';
 
 import { IoIosSend } from "react-icons/io";
 
+import {v4 as uuidv4} from 'uuid';
+
 import styles from './AddItem.module.css';
 
-const AddCategory = () => {
+const AddItem = () => {
+  
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const { categories, createNewItem } = useContext(CategoryContext);
 
   const onSubmit = (data) => {
+    const updatedItem = {
+      ...data,
+      id: uuidv4()
+    }
     createNewItem(data);
+    
+    navigate('/');
   }
 
   useEffect(() => {
@@ -113,14 +125,14 @@ const AddCategory = () => {
           </span>
         </Form.Group>
         <Form.Group
-          controlId="expire_date"
+          controlId="expiration_date"
         >
           <Form.Label>
             Data de validade
           </Form.Label>
           <Form.Control
             type="date"
-            {...register("expire_date",
+            {...register("expiration_date",
               {
                 required: "Informe a validade do produto"
               })}
@@ -190,4 +202,4 @@ const AddCategory = () => {
   )
 }
 
-export default AddCategory;
+export default AddItem;
