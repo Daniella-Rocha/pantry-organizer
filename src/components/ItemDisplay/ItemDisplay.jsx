@@ -15,84 +15,148 @@ import { MdDangerous } from "react-icons/md";
 import { FcExpired } from "react-icons/fc";
 
 import styles from './ItemDisplay.module.css';
+import useCheckExpiration from '../../hooks/checkExpiration/useCheckExpiration';
 
 dayjs.locale('pt-br');
 
 const ItemDisplay = ({ item, deleteItem }) => {
 
+    const { verifyExpiration, dateFormatting, formatedDate } = useCheckExpiration();
+
     const { name, quantity, category, expiration_date } = item;
 
-    const { diference, expiresSoon } = useExpiresSoon(expiration_date);
+    const [editedItem, setEditedItem] = useState(null);
+
+    const { diference, expiresSoon, checkDiference, checkExpiresSoon } = useExpiresSoon(expiration_date);
 
     const [date, setDate] = useState('');
 
     useEffect(() => {
         setDate(dayjs(expiration_date).format('DD/MM/YYYY'));
     }, [date]);
-
-    const checkExpiration = () => {
-        const now = dayjs();
-        const dateProduct = dayjs(expiration_date);
-        const expired = dateProduct.isBefore(now);
-
-        return expired;
-    }
+    
+    useEffect(() =>{
+        if(editedItem){
+            dateFormatting(editedItem.expiration_date)
+        }
+    }, [editedItem]);
 
     return (
-        <div className={styles.container_display}>
-            <div >
-                <h3>{name}</h3>
-                <span>Qtd: {quantity}</span>
-                <div>
-                    <span>categoria: {category}</span>
-                </div>
-            </div>
-            <div>
-                {
-                    (
-                        checkExpiration() &&
-                        (
-                            <span
-                                className={`
-                    ${checkExpiration() ? styles.expired : ''}
+
+        editedItem ?
+            (
+                <div className={styles.container_display}>
+                    <div >
+                        <h3>{editedItem.name}</h3>
+                        <span>Qtd: {editedItem.quantity}</span>
+                        <div>
+                            <span>categoria: {editedItem.category}</span>
+                        </div>
+                    </div>
+                    <div>
+                        {
+                            (
+                                verifyExpiration(editedItem.expiration_date) &&
+                                (
+                                    <span
+                                        className={`
+                    ${verifyExpiration(editedItem.expiration_date) ? styles.expired : ''}
                     `}
+                                    >
+                                        expirado: {editedItem.expiration_date}
+                                        <MdDangerous />
+                                    </span>
+                                ))
+                            ||
+                            checkExpiresSoon(editedItem.expiration_date) &&
+                            (
+                                <span
+                                    className={` ${checkExpiresSoon(editedItem.expiration_date) ? styles.expires_soon : ''} `}
+                                >
+                                    {/* expira em breve: {diference} {diference > 1 ? `dias` : `dia`} */}
+                                    expira em breve: {checkDiference(editedItem.expiration_date)} {checkDiference(editedItem.expiration_date) > 1 ? `dias` : `dia`}
+                                    <FcExpired />
+                                </span>
+                            )
+                            ||
+                            (
+                                // <span> expira em: {editedItem.expiration_date}</span>
+                                <span> expira em: {formatedDate}</span>
+                            )
+                        }
+                    </div>
+                    <div className={styles.item_display_btns}>
+                        <ItemModal item={editedItem} />
+                        <EditModal item={editedItem} editedItem={setEditedItem} />
+                        <div className={styles.item_display_btn_delete}>
+                            <button
+
+                                type="button"
+                                aria-label='excluir'
+                                onClick={() => deleteItem(editedItem.id, editedItem)}
                             >
-                                expirado: {date}
-                                <MdDangerous />
-                            </span>
-                        ))
-                    ||
-                    expiresSoon &&
-                    (
-                        <span
-                            className={` ${expiresSoon ? styles.expires_soon : ''} `}
-                        >
-                            expira em breve: {diference} {diference > 1 ? `dias` : `dia`}
-                            <FcExpired />
-                        </span>
-                    )
-                    ||
-                    (
-                        <span> expira em: {date}</span>
-                    )
-
-                }
-            </div>
-            <div className={styles.item_display_btns}>
-                <ItemModal item={item} />
-                <EditModal item={item} />
-                <div className={styles.item_display_btn_delete}>
-                    <button
-
-                        type="button"
-                        aria-label='excluir'
-                        onClick={() => deleteItem(item.id)}
-                    >
-                        Excluir
-                    </button>
+                                Excluir
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            )
+            :
+            (
+                <div className={styles.container_display}>
+                    <div >
+                        <h3>{name}</h3>
+                        <span>Qtd: {quantity}</span>
+                        <div>
+                            <span>categoria: {category}</span>
+                        </div>
+                    </div>
+                    <div>
+                        {
+                            (
+                                verifyExpiration(expiration_date) &&
+                                (
+                                    <span
+                                        className={`
+                    ${verifyExpiration(expiration_date) ? styles.expired : ''}
+                    `}
+                                    >
+                                        expirado: {date}
+                                        <MdDangerous />
+                                    </span>
+                                ))
+                            ||
+                            expiresSoon &&
+                            (
+                                <span
+                                    className={` ${expiresSoon ? styles.expires_soon : ''} `}
+                                >
+                                    expira em breve: {diference} {diference > 1 ? `dias` : `dia`}
+                                    <FcExpired />
+                                </span>
+                            )
+                            ||
+                            (
+                                <span> expira em: {date}</span>
+                            )
+
+                        }
+                    </div>
+                    <div className={styles.item_display_btns}>
+                        <ItemModal item={item} />
+                        <EditModal item={item} editedItem={setEditedItem} />
+                        <div className={styles.item_display_btn_delete}>
+                            <button
+
+                                type="button"
+                                aria-label='excluir'
+                                onClick={() => deleteItem(item.id, item)}
+                            >
+                                Excluir
+                            </button>
+                        </div>
+                    </div>
+                </div>)
     )
 }
 
