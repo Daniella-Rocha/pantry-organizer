@@ -10,20 +10,22 @@ import Modal from 'react-bootstrap/Modal';
 
 import Form from 'react-bootstrap/Form';
 
+import {v4 as uuidv4} from 'uuid';
+
 import styles from './EditItem.module.css';
 
 import './EditItem.css';
 
-const EditItem = ({ item }) => {
+const EditItem = ({ item, editedItem }) => {
 
     const { updateItem } = useContext(CategoryContext);
 
-    const { register, handleSubmit, control, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues:{
             name: item.name,
             description: item.description,
             category: item.category,
-            expire_date: item.expiration_date,
+            expiration_date: item.expiration_date,
             quantity: item.quantity,
             weight: item.weight
         }
@@ -31,15 +33,22 @@ const EditItem = ({ item }) => {
 
     const onSubmit = (data) => {
         item = {
+            id: item.id,
             name: data.name,
             description: data.description,
             category: data.category,
-            expire_date: data.expire_date,
+            expiration_date: data.expiration_date,
             quantity: data.quantity,
             weight: data.weight
         }
         updateItem(item.id, item);
+        setShow(false);
+        editedItem(item);
     }
+    
+    useEffect(() =>{
+        
+    }, []);
 
     const { categories } = useContext(CategoryContext);
 
@@ -156,7 +165,7 @@ const EditItem = ({ item }) => {
                             </span>
                         </Form.Group>
                         <Form.Group
-                            controlId="expire_date"
+                            controlId="expiration_date"
                         >
                             <Form.Label>
                                 Data de validade
@@ -166,7 +175,7 @@ const EditItem = ({ item }) => {
                                 placeholder="Data de validade"
                                 className="mb-3"
 
-                                {...register("expire_date",
+                                {...register("expiration_date",
                                     {
                                         required: "Informe a validade do produto"
                                     })}
