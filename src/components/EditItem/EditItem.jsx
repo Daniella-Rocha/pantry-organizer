@@ -45,10 +45,6 @@ const EditItem = ({ item, editedItem }) => {
         setShow(false);
         editedItem(item);
     }
-    
-    useEffect(() =>{
-        
-    }, []);
 
     const { categories } = useContext(CategoryContext);
 
